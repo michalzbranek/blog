@@ -8,7 +8,19 @@
         <link href="https://fonts.googleapis.com/css?family=Russo+One&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Roboto:400,900&display=swap" rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
-    </head>
+        <style>
+          .nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+              color: #000000;
+              background-color: #cacaca;
+          }
+          .nav-pills button {
+              color:black;
+          }
+          .nav-pills button:hover {
+              color:black;
+          }
+      </style>
+      </head>
     <body>
         <nav class="navbar pt-4 pb-3" style="border-bottom: 2px solid rgb(240, 240, 240);">
             <div class="navbar-brand px-5 mx-auto mx-sm-5" style="font-family: 'Russo One', sans-serif;">
@@ -19,7 +31,7 @@
 
         <div class="row">
             <div class="col-lg-3">
-              <div class="nav flex-column me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical" style="font-family: 'Russo One', sans-serif;">
+              <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical" style="font-family: 'Russo One', sans-serif;">
                 <button class="nav-link active fs-5" id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true">ŽIVOT</button>
                 <button class="nav-link fs-5" id="v-pills-boss-tab" data-bs-toggle="pill" data-bs-target="#v-pills-boss" type="button" role="tab" aria-controls="v-pills-boss" aria-selected="false">VÍRA</button>
                 <button class="nav-link fs-5" id="v-pills-history-tab" data-bs-toggle="pill" data-bs-target="#v-pills-history" type="button" role="tab" aria-controls="v-pills-history" aria-selected="false">RESPEKT</button>
