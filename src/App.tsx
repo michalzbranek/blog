@@ -1,7 +1,12 @@
 import "./App.css";
+import ResponsiveDrawer from "./ResponsiveDrawer";
 
 function App() {
-  return <></>;
+  return (
+    <>
+      <ResponsiveDrawer />
+    </>
+  );
 }
 
 export default App;
