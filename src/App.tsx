@@ -1,10 +1,10 @@
 import "./App.css";
-import ResponsiveDrawer from "./ResponsiveDrawer";
+import ArticleList from "./ArticleList";
 
 function App() {
   return (
     <>
-      <ResponsiveDrawer />
+      <ArticleList />
     </>
   );
 }
