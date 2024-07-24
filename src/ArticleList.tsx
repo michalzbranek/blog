@@ -47,6 +47,7 @@ function ArticleList(props: Props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
+  const [selectedIndex, setSelectedIndex] = useState(0);
 
   const handleDrawerClose = () => {
     setIsClosing(true);
@@ -63,17 +64,36 @@ function ArticleList(props: Props) {
     }
   };
 
-  const changeArticle = (index: number) => {
+  const changeArticle = (
+    /* tslint:disable:no-unused-variable */
+    event: React.MouseEvent<HTMLDivElement, MouseEvent>,
+    index: number
+  ) => {
     setArticle(articles[index]);
+    setSelectedIndex(index);
+    console.log(event);
   };
 
   const drawer = (
     <div>
-      <Toolbar sx={{ height: 120 }} />
-      <List>
+      <List disablePadding>
         {articles.map((article, index) => (
           <ListItem key={index} disablePadding>
-            <ListItemButton onClick={() => changeArticle(index)}>
+            <ListItemButton
+              sx={{
+                "&.Mui-selected": {
+                  backgroundColor: "black",
+                  color: "white",
+                },
+                ":hover": {
+                  backgroundColor: "black",
+                  color: "white",
+                },
+                ":hover:focus": { backgroundColor: "black", color: "white" },
+              }}
+              selected={selectedIndex === index}
+              onClick={(event) => changeArticle(event, index)}
+            >
               <ListItemText>
                 <Typography fontFamily={"Russo One"} fontSize={20}>
                   {article.name}
@@ -158,7 +178,7 @@ function ArticleList(props: Props) {
             "& .MuiDrawer-paper": {
               boxSizing: "border-box",
               width: drawerWidth,
-              borderRight: 1
+              borderRight: 1,
             },
           }}
           open
