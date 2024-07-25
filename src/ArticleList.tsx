@@ -114,13 +114,14 @@ function ArticleList(props: Props) {
       <CssBaseline />
       <AppBar
         position="fixed"
-        color="transparent"
         sx={{
           width: { sm: `calc(100% - ${drawerWidth}px)` },
           ml: { sm: `${drawerWidth}px` },
           height: 120,
           borderBottom: 1,
           display: "inline",
+          backgroundColor: "white",
+          color: "black",
         }}
         elevation={0}
       >
@@ -132,7 +133,7 @@ function ArticleList(props: Props) {
           onClick={handleDrawerToggle}
           sx={{
             pt: 0,
-            pl: 7,
+            pl: 6,
             display: { sm: "none" },
             width: 40,
             ":hover": {
@@ -162,7 +163,7 @@ function ArticleList(props: Props) {
           sx={{
             fontSize: { xs: 20, sm: 20 },
             display: "block",
-            marginLeft: { xs: 10.5, sm: 3 },
+            marginLeft: { xs: 9.5, sm: 3 },
             marginTop: { xs: -2, sm: 0 },
           }}
         >
