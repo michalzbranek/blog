@@ -65,7 +65,6 @@ function ArticleList(props: Props) {
   };
 
   const changeArticle = (
-    /* tslint:disable:no-unused-variable */
     event: React.MouseEvent<HTMLDivElement, MouseEvent>,
     index: number
   ) => {
@@ -121,6 +120,7 @@ function ArticleList(props: Props) {
           ml: { sm: `${drawerWidth}px` },
           height: 120,
           borderBottom: 1,
+          display: "inline",
         }}
         elevation={0}
       >
@@ -128,21 +128,44 @@ function ArticleList(props: Props) {
           color="inherit"
           aria-label="open drawer"
           edge="start"
+          component="span"
           onClick={handleDrawerToggle}
-          sx={{ mr: 2, display: { sm: "none" } }}
+          sx={{
+            pt: 0,
+            pl: 7,
+            display: { sm: "none" },
+            width: 40,
+            ":hover": {
+              backgroundColor: "white",
+            },
+          }}
         >
-          <MenuIcon />
+          <MenuIcon sx={{ fontSize: 30 }} />
         </IconButton>
         <Typography
           fontFamily={"Russo One"}
-          variant="h4"
           noWrap
-          component="div"
-          sx={{ mt: 3, ml: 3 }}
+          component="span"
+          sx={{
+            marginTop: { xs: 3, sm: 3 },
+            fontSize: { xs: 27.5, sm: 30 },
+            display: { xs: "inline-block", sm: "block" },
+            marginLeft: { xs: 4, sm: 3 },
+          }}
         >
           MICHAL ZBRANEK
         </Typography>
-        <Typography fontFamily={"Russo One"} variant="h5" sx={{ ml: 3 }}>
+        <Typography
+          align="left"
+          component="span"
+          fontFamily={"Russo One"}
+          sx={{
+            fontSize: { xs: 20, sm: 20 },
+            display: "block",
+            marginLeft: { xs: 10.5, sm: 3 },
+            marginTop: { xs: -2, sm: 0 },
+          }}
+        >
           BLOG
         </Typography>
       </AppBar>
