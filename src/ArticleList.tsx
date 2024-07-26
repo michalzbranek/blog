@@ -3,11 +3,11 @@ import List from "@mui/material/List";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
 import ListItem from "@mui/material/ListItem";
-import { Box, Drawer, Toolbar, Typography } from "@mui/material";
-import AppBar from "@mui/material/AppBar";
+import { Box, Typography } from "@mui/material";
 import CssBaseline from "@mui/material/CssBaseline";
-import IconButton from "@mui/material/IconButton";
-import MenuIcon from "@mui/icons-material/Menu";
+import BlogBar from "./BlogBar";
+import DrawerBox from "./DrawerBox";
+import Articles from "./Articles";
 
 const articles = [
   {
@@ -164,115 +164,19 @@ function ArticleList(props: Props) {
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
-      <AppBar
-        position="fixed"
-        sx={{
-          width: { sm: `calc(100% - ${drawerWidth}px)` },
-          ml: { sm: `${drawerWidth}px` },
-          height: 120,
-          borderBottom: 1,
-          display: "inline",
-          backgroundColor: "white",
-          color: "black",
-        }}
-        elevation={0}
-      >
-        <IconButton
-          color="inherit"
-          aria-label="open drawer"
-          edge="start"
-          component="span"
-          onClick={handleDrawerToggle}
-          sx={{
-            pt: 0,
-            pl: 6,
-            display: { sm: "none" },
-            width: 40,
-            ":hover": {
-              backgroundColor: "white",
-            },
-          }}
-        >
-          <MenuIcon sx={{ fontSize: 30 }} />
-        </IconButton>
-        <Typography
-          fontFamily={"Russo One"}
-          noWrap
-          component="span"
-          sx={{
-            marginTop: { xs: 3, sm: 3 },
-            fontSize: { xs: 27.5, sm: 30 },
-            display: { xs: "inline-block", sm: "block" },
-            marginLeft: { xs: 4, sm: 3 },
-          }}
-        >
-          MICHAL ZBRANEK
-        </Typography>
-        <Typography
-          align="left"
-          component="span"
-          fontFamily={"Russo One"}
-          sx={{
-            fontSize: { xs: 20, sm: 20 },
-            display: "block",
-            marginLeft: { xs: 9.5, sm: 3 },
-            marginTop: { xs: -2, sm: 0 },
-          }}
-        >
-          BLOG
-        </Typography>
-      </AppBar>
-      <Box
-        component="nav"
-        sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
-        aria-label="mailbox folders"
-      >
-        {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
-        <Drawer
-          container={container}
-          variant="temporary"
-          open={mobileOpen}
-          onTransitionEnd={handleDrawerTransitionEnd}
-          onClose={handleDrawerClose}
-          ModalProps={{
-            keepMounted: true, // Better open performance on mobile.
-          }}
-          sx={{
-            display: { xs: "block", sm: "none" },
-            "& .MuiDrawer-paper": {
-              boxSizing: "border-box",
-              width: drawerWidth,
-            },
-          }}
-        >
-          {drawer}
-        </Drawer>
-        <Drawer
-          variant="permanent"
-          sx={{
-            display: { xs: "none", sm: "block" },
-            "& .MuiDrawer-paper": {
-              boxSizing: "border-box",
-              width: drawerWidth,
-              borderRight: 1,
-            },
-          }}
-          open
-        >
-          {drawer}
-        </Drawer>
-      </Box>
-      <Box
-        component="main"
-        sx={{
-          flexGrow: 1,
-          p: 3,
-          width: { sm: `calc(100% - ${drawerWidth}px)` },
-        }}
-      >
-        <Toolbar sx={{ height: 120 }} />
-        <Typography paragraph>{article.text}</Typography>
-      </Box>
+      <BlogBar
+        drawerWidth={drawerWidth}
+        handleDrawerToggle={handleDrawerToggle}
+      />
+      <DrawerBox
+        drawerWidth={drawerWidth}
+        drawer={drawer}
+        container={container}
+        mobileOpen={mobileOpen}
+        handleDrawerClose={handleDrawerClose}
+        handleDrawerTransitionEnd={handleDrawerTransitionEnd}
+      />
+      <Articles article={article} drawerWidth={drawerWidth} />
     </Box>
   );
 }
