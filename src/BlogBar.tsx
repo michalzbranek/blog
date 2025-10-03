@@ -54,7 +54,7 @@ function BlogBar({drawerWidth, handleDrawerToggle}) {
             marginTop: { xs: 0, sm: 0 },
           }}
         >
-          BLOG
+          BLOG (TEST)
         </Typography>
       </AppBar>
   );
