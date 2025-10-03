@@ -146,7 +146,7 @@ function ArticleList(props: Props) {
               onClick={(event) => changeArticle(event, index)}
             >
               <ListItemText>
-                <Typography fontFamily={"Russo One"} fontSize={20}>
+                <Typography fontFamily={"Russo One"}>
                   {article.name}
                 </Typography>
               </ListItemText>

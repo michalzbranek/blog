@@ -9,9 +9,8 @@ function BlogBar({drawerWidth, handleDrawerToggle}) {
         sx={{
           width: { sm: `calc(100% - ${drawerWidth}px)` },
           ml: { sm: `${drawerWidth}px` },
-          height: 120,
+          height: { xs: 120, sm: 170 },
           borderBottom: 1,
-          display: "inline",
           backgroundColor: "white",
           color: "black",
         }}
@@ -20,14 +19,12 @@ function BlogBar({drawerWidth, handleDrawerToggle}) {
         <IconButton
           color="inherit"
           aria-label="open drawer"
-          edge="start"
-          component="span"
           onClick={handleDrawerToggle}
           sx={{
-            pt: 0,
-            pl: 6,
+            position: 'absolute',
+            top: 34,
+            left: 14,
             display: { sm: "none" },
-            width: 40,
             ":hover": {
               backgroundColor: "white",
             },
@@ -38,25 +35,23 @@ function BlogBar({drawerWidth, handleDrawerToggle}) {
         <Typography
           fontFamily={"Russo One"}
           noWrap
-          component="span"
+          component="div"
           sx={{
             marginTop: { xs: 3, sm: 3 },
-            fontSize: { xs: 27.5, sm: 30 },
-            display: { xs: "inline-block", sm: "block" },
-            marginLeft: { xs: 4, sm: 3 },
+            fontSize: { xs: 27.5, sm: 50 },
+            marginLeft: { xs: 10, sm: 3 },
           }}
         >
           MICHAL ZBRANEK
         </Typography>
         <Typography
           align="left"
-          component="span"
+          component="div"
           fontFamily={"Russo One"}
           sx={{
-            fontSize: { xs: 20, sm: 20 },
-            display: "block",
-            marginLeft: { xs: 9.5, sm: 3 },
-            marginTop: { xs: -2, sm: 0 },
+            fontSize: { xs: 20, sm: 35 },
+            marginLeft: { xs: 10, sm: 3 },
+            marginTop: { xs: 0, sm: 0 },
           }}
         >
           BLOG

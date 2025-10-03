@@ -11,7 +11,7 @@ function Articles({ article, drawerWidth }) {
         width: { sm: `calc(100% - ${drawerWidth}px)` },
       }}
     >
-      <Toolbar sx={{ height: 120 }} />
+      <Toolbar sx={{ height: { xs: 120, sm: 170 } }} />
       <Typography paragraph>{article.text}</Typography>
     </Box>
   );
