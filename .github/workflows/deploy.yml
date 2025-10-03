@@ -1,49 +1,30 @@
-name: Deploy
+name: Deploy to GitHub Pages
 
 on:
   push:
     branches:
-      - main
+      - main # Spustí se při každém pushi do hlavní větve
 
 jobs:
-  build:
-    name: Build
-    runs-on: ubuntu-latest
-
+  build-and-deploy:
+    runs-on: ubuntu-latest # Použije se virtuální server s Linuxem
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v4
+      - name: Checkout # Krok 1: Stáhne si kód z vašeho repozitáře
+        uses: actions/checkout@v3
 
-      - name: Setup Node
-        uses: actions/setup-node@v4
+      - name: Setup Node.js # Krok 2: Nastaví prostředí pro Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18' # Použijeme Node.js verze 18
 
-      - name: Install dependencies
-        uses: bahmutov/npm-install@v1
+      - name: Install dependencies # Krok 3: Nainstaluje závislosti
+        run: npm install
 
-      - name: Build project
+      - name: Build project # Krok 4: Sestaví projekt (vytvoří složku dist)
         run: npm run build
 
-      - name: Upload production-ready build files
-        uses: actions/upload-artifact@v4
-        with:
-          name: production-files
-          path: ./dist
-
-  deploy:
-    name: Deploy
-    needs: build
-    runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main'
-
-    steps:
-      - name: Download artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: production-files
-          path: ./dist
-
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v4
+      - name: Deploy # Krok 5: Nahraje obsah složky dist na GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
