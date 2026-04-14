@@ -5,8 +5,12 @@ import Brightness7Icon from '@mui/icons-material/Brightness7';
 import { useContext } from "react";
 import { ColorModeContext } from "./main";
 
-// @ts-ignore: Object is possibly 'null'.
-function BlogBar({ drawerWidth, handleDrawerToggle }) {
+interface BlogBarProps {
+  drawerWidth: number;
+  handleDrawerToggle: () => void;
+}
+
+function BlogBar({ drawerWidth, handleDrawerToggle }: BlogBarProps) {
   const theme = useTheme();
   const colorMode = useContext(ColorModeContext);
 
@@ -67,7 +71,10 @@ function BlogBar({ drawerWidth, handleDrawerToggle }) {
         </Box>
       </Box>
 
-      <IconButton onClick={colorMode.toggleColorMode} color="inherit">
+      <IconButton onClick={() => {
+        console.log("Toggle clicked");
+        colorMode.toggleColorMode();
+      }} color="inherit">
         {theme.palette.mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
       </IconButton>
     </AppBar>

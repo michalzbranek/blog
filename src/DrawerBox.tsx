@@ -1,7 +1,22 @@
 import { Box, Drawer, useTheme } from "@mui/material";
 
-// @ts-ignore: Object is possibly 'null'.
-function DrawerBox({ drawerWidth, drawer, container, mobileOpen, handleDrawerTransitionEnd, handleDrawerClose }) {
+interface DrawerBoxProps {
+  drawerWidth: number;
+  drawer: React.ReactNode;
+  container?: (() => HTMLElement) | undefined;
+  mobileOpen: boolean;
+  handleDrawerTransitionEnd: () => void;
+  handleDrawerClose: () => void;
+}
+
+function DrawerBox({ 
+  drawerWidth, 
+  drawer, 
+  container, 
+  mobileOpen, 
+  handleDrawerTransitionEnd, 
+  handleDrawerClose 
+}: DrawerBoxProps) {
   const theme = useTheme();
 
   return (

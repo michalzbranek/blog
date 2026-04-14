@@ -1,9 +1,16 @@
-import { Box, Toolbar, Typography, Container, Divider, useTheme } from "@mui/material";
+import { Box, Toolbar, Typography, Container, Divider } from "@mui/material";
 
-// @ts-ignore: Object is possibly 'null'.
-function Articles({ article, drawerWidth }) {
-  const theme = useTheme();
+interface Article {
+  name: string;
+  text: string;
+}
 
+interface ArticlesProps {
+  article: Article;
+  drawerWidth: number;
+}
+
+function Articles({ article, drawerWidth }: ArticlesProps) {
   return (
     <Box
       component="main"
