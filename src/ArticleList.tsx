@@ -3,7 +3,7 @@ import List from "@mui/material/List";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
 import ListItem from "@mui/material/ListItem";
-import { Box, Typography } from "@mui/material";
+import { Box, Typography, Divider, Toolbar } from "@mui/material";
 import CssBaseline from "@mui/material/CssBaseline";
 import BlogBar from "./BlogBar";
 import DrawerBox from "./DrawerBox";
@@ -84,7 +84,7 @@ const articles = [
   },
 ];
 
-const drawerWidth = 240;
+const drawerWidth = 280;
 
 interface Props {
   /**
@@ -122,34 +122,62 @@ function ArticleList(props: Props) {
   ) => {
     setArticle(articles[index]);
     setSelectedIndex(index);
+    if (mobileOpen) {
+      handleDrawerClose();
+    }
     console.log(event);
   };
 
   const drawer = (
     <div>
-      <List disablePadding>
+      <Toolbar sx={{ 
+        display: "flex", 
+        flexDirection: "column", 
+        justifyContent: "center", 
+        height: { xs: 70, sm: 80 },
+        px: 2
+      }}>
+        <Typography 
+          variant="h6" 
+          sx={{ 
+            fontFamily: '"Russo One", sans-serif', 
+            letterSpacing: 1,
+            color: 'primary.main',
+            textAlign: 'center'
+          }}
+        >
+          ARCHIV
+        </Typography>
+      </Toolbar>
+      <Divider sx={{ mb: 1 }} />
+      <List disablePadding sx={{ px: 1 }}>
         {articles.map((article, index) => (
-          <ListItem key={index} disablePadding>
+          <ListItem key={index} disablePadding sx={{ mb: 0.5 }}>
             <ListItemButton
               sx={{
+                borderRadius: '8px',
                 "&.Mui-selected": {
-                  backgroundColor: "black",
-                  color: "white",
+                  backgroundColor: "primary.main",
+                  color: "primary.contrastText",
+                  "&:hover": {
+                    backgroundColor: "primary.dark",
+                  },
                 },
                 ":hover": {
-                  backgroundColor: "black",
-                  color: "white",
+                  backgroundColor: "rgba(0,0,0,0.04)",
                 },
-                ":hover:focus": { backgroundColor: "black", color: "white" },
               }}
               selected={selectedIndex === index}
               onClick={(event) => changeArticle(event, index)}
             >
-              <ListItemText>
-                <Typography fontFamily={"Russo One"}>
-                  {article.name}
-                </Typography>
-              </ListItemText>
+              <ListItemText
+                primary={article.name}
+                primaryTypographyProps={{
+                  fontFamily: '"Russo One", sans-serif',
+                  fontSize: '0.9rem',
+                  letterSpacing: '0.5px'
+                }}
+              />
             </ListItemButton>
           </ListItem>
         ))}

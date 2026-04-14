@@ -1,14 +1,15 @@
-import { Box, Drawer } from "@mui/material";
+import { Box, Drawer, useTheme } from "@mui/material";
 
 // @ts-ignore: Object is possibly 'null'.
-function DrawerBox({drawerWidth, drawer, container, mobileOpen, handleDrawerTransitionEnd, handleDrawerClose}) {
+function DrawerBox({ drawerWidth, drawer, container, mobileOpen, handleDrawerTransitionEnd, handleDrawerClose }) {
+  const theme = useTheme();
+
   return (
     <Box
       component="nav"
       sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
-      aria-label="mailbox folders"
+      aria-label="navigation archive"
     >
-      {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
       <Drawer
         container={container}
         variant="temporary"
@@ -16,13 +17,15 @@ function DrawerBox({drawerWidth, drawer, container, mobileOpen, handleDrawerTran
         onTransitionEnd={handleDrawerTransitionEnd}
         onClose={handleDrawerClose}
         ModalProps={{
-          keepMounted: true, // Better open performance on mobile.
+          keepMounted: true,
         }}
         sx={{
           display: { xs: "block", sm: "none" },
           "& .MuiDrawer-paper": {
             boxSizing: "border-box",
             width: drawerWidth,
+            boxShadow: '4px 0 12px rgba(0,0,0,0.05)',
+            borderRight: 'none',
           },
         }}
       >
@@ -35,7 +38,8 @@ function DrawerBox({drawerWidth, drawer, container, mobileOpen, handleDrawerTran
           "& .MuiDrawer-paper": {
             boxSizing: "border-box",
             width: drawerWidth,
-            borderRight: 1,
+            borderRight: `1px solid ${theme.palette.divider}`,
+            backgroundColor: 'background.paper',
           },
         }}
         open

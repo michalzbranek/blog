@@ -1,62 +1,76 @@
-import { AppBar, IconButton, Typography } from "@mui/material";
+import { AppBar, IconButton, Typography, Box, useTheme } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
+import Brightness4Icon from '@mui/icons-material/Brightness4';
+import Brightness7Icon from '@mui/icons-material/Brightness7';
+import { useContext } from "react";
+import { ColorModeContext } from "./main";
 
 // @ts-ignore: Object is possibly 'null'.
-function BlogBar({drawerWidth, handleDrawerToggle}) {
+function BlogBar({ drawerWidth, handleDrawerToggle }) {
+  const theme = useTheme();
+  const colorMode = useContext(ColorModeContext);
+
   return (
     <AppBar
-        position="fixed"
-        sx={{
-          width: { sm: `calc(100% - ${drawerWidth}px)` },
-          ml: { sm: `${drawerWidth}px` },
-          height: { xs: 120, sm: 170 },
-          borderBottom: 1,
-          backgroundColor: "white",
-          color: "black",
-        }}
-        elevation={0}
-      >
+      position="fixed"
+      sx={{
+        width: { sm: `calc(100% - ${drawerWidth}px)` },
+        ml: { sm: `${drawerWidth}px` },
+        height: { xs: 70, sm: 80 },
+        elevation: 0,
+        display: "flex",
+        flexDirection: "row",
+        alignItems: "center",
+        justifyContent: "space-between",
+        px: { xs: 2, sm: 4 },
+        backgroundColor: "background.paper",
+        borderBottom: `1px solid ${theme.palette.divider}`,
+      }}
+    >
+      <Box sx={{ display: "flex", alignItems: "center" }}>
         <IconButton
           color="inherit"
           aria-label="open drawer"
           onClick={handleDrawerToggle}
           sx={{
-            position: 'absolute',
-            top: 34,
-            left: 14,
             display: { sm: "none" },
-            ":hover": {
-              backgroundColor: "white",
-            },
+            mr: 2,
           }}
         >
-          <MenuIcon sx={{ fontSize: 30 }} />
+          <MenuIcon />
         </IconButton>
-        <Typography
-          fontFamily={"Russo One"}
-          noWrap
-          component="div"
-          sx={{
-            marginTop: { xs: 3, sm: 3 },
-            fontSize: { xs: 27.5, sm: 50 },
-            marginLeft: { xs: 10, sm: 3 },
-          }}
-        >
-          MICHAL ZBRANEK
-        </Typography>
-        <Typography
-          align="left"
-          component="div"
-          fontFamily={"Russo One"}
-          sx={{
-            fontSize: { xs: 20, sm: 35 },
-            marginLeft: { xs: 10, sm: 3 },
-            marginTop: { xs: 0, sm: 0 },
-          }}
-        >
-          BLOG
-        </Typography>
-      </AppBar>
+        <Box sx={{ display: "flex", alignItems: "baseline", gap: 1 }}>
+          <Typography
+            variant="h4"
+            sx={{
+              fontWeight: 800,
+              fontSize: { xs: "1.2rem", sm: "2rem" },
+              fontFamily: '"Russo One", sans-serif',
+              color: "text.primary",
+            }}
+          >
+            MICHAL ZBRANEK
+          </Typography>
+          <Typography
+            variant="subtitle1"
+            sx={{
+              fontWeight: 600,
+              color: "text.secondary",
+              fontSize: { xs: "0.8rem", sm: "1.1rem" },
+              fontFamily: '"Russo One", sans-serif',
+              letterSpacing: 2,
+              display: { xs: "none", sm: "block" }
+            }}
+          >
+            BLOG
+          </Typography>
+        </Box>
+      </Box>
+
+      <IconButton onClick={colorMode.toggleColorMode} color="inherit">
+        {theme.palette.mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
+      </IconButton>
+    </AppBar>
   );
 }
 
