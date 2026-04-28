@@ -33,12 +33,12 @@ function BlogBar({ drawerWidth, handleDrawerToggle }: BlogBarProps) {
     >
       <Box sx={{ display: "flex", alignItems: "center" }}>
         <IconButton
-          color="inherit"
           aria-label="open drawer"
           onClick={handleDrawerToggle}
           sx={{
             display: { sm: "none" },
             mr: 2,
+            color: "text.primary",
           }}
         >
           <MenuIcon />
@@ -63,7 +63,6 @@ function BlogBar({ drawerWidth, handleDrawerToggle }: BlogBarProps) {
               fontSize: { xs: "0.8rem", sm: "1.1rem" },
               fontFamily: '"Russo One", sans-serif',
               letterSpacing: 2,
-              display: { xs: "none", sm: "block" }
             }}
           >
             BLOG
@@ -71,10 +70,13 @@ function BlogBar({ drawerWidth, handleDrawerToggle }: BlogBarProps) {
         </Box>
       </Box>
 
-      <IconButton onClick={() => {
-        console.log("Toggle clicked");
-        colorMode.toggleColorMode();
-      }} color="inherit">
+      <IconButton
+        onClick={() => {
+          console.log("Toggle clicked");
+          colorMode.toggleColorMode();
+        }}
+        sx={{ color: "text.primary" }}
+      >
         {theme.palette.mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
       </IconButton>
     </AppBar>
