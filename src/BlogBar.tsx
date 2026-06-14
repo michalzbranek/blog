@@ -4,7 +4,7 @@ import { AppBar, IconButton, Typography, Box, useTheme } from "@mui/material";
 // causing React error #130 / blank page. See: https://github.com/rolldown/rolldown/issues
 import { Menu as MenuIcon, Brightness4 as Brightness4Icon, Brightness7 as Brightness7Icon } from "@mui/icons-material";
 import { useContext } from "react";
-import { ColorModeContext } from "./main";
+import { ColorModeContext } from "./ColorModeContext";
 
 interface BlogBarProps {
   drawerWidth: number;

@@ -1,9 +1,8 @@
-import React, { useState, useMemo, createContext } from 'react'
+import React, { useState, useMemo } from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.tsx'
 import { ThemeProvider, createTheme, CssBaseline, useMediaQuery } from '@mui/material';
-
-export const ColorModeContext = createContext({ toggleColorMode: () => { console.log("Default context toggle"); } });
+import { ColorModeContext } from './ColorModeContext';
 
 function Main() {
   const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');

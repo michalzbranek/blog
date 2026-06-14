@@ -172,10 +172,14 @@ function ArticleList(props: Props) {
             >
               <ListItemText
                 primary={article.name}
-                primaryTypographyProps={{
-                  fontFamily: '"Russo One", sans-serif',
-                  fontSize: '0.9rem',
-                  letterSpacing: '0.5px'
+                slotProps={{
+                  primary: {
+                    sx: {
+                      fontFamily: '"Russo One", sans-serif',
+                      fontSize: '0.9rem',
+                      letterSpacing: '0.5px',
+                    }
+                  }
                 }}
               />
             </ListItemButton>
