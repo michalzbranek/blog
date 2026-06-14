@@ -1,7 +1,8 @@
 import { AppBar, IconButton, Typography, Box, useTheme } from "@mui/material";
-import MenuIcon from "@mui/icons-material/Menu";
-import Brightness4Icon from '@mui/icons-material/Brightness4';
-import Brightness7Icon from '@mui/icons-material/Brightness7';
+// Named ESM imports from the package root — do NOT switch to deep CJS subpath imports
+// (e.g. "@mui/icons-material/Menu"). Rolldown (Vite 8) mis-resolves their default export,
+// causing React error #130 / blank page. See: https://github.com/rolldown/rolldown/issues
+import { Menu as MenuIcon, Brightness4 as Brightness4Icon, Brightness7 as Brightness7Icon } from "@mui/icons-material";
 import { useContext } from "react";
 import { ColorModeContext } from "./main";
 
@@ -72,7 +73,6 @@ function BlogBar({ drawerWidth, handleDrawerToggle }: BlogBarProps) {
 
       <IconButton
         onClick={() => {
-          console.log("Toggle clicked");
           colorMode.toggleColorMode();
         }}
         sx={{ color: "text.primary" }}
