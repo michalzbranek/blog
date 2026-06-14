@@ -11,11 +11,10 @@ function Main() {
   const colorMode = useMemo(
     () => ({
       toggleColorMode: () => {
-        console.log("Setting mode from", mode);
         setMode((prevMode) => (prevMode === 'light' ? 'dark' : 'light'));
       },
     }),
-    [mode],
+    [],
   );
 
   const theme = useMemo(

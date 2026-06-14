@@ -117,7 +117,7 @@ function ArticleList(props: Props) {
   };
 
   const changeArticle = (
-    event: React.MouseEvent<HTMLDivElement, MouseEvent>,
+    _event: React.MouseEvent<HTMLDivElement, MouseEvent>,
     index: number
   ) => {
     setArticle(articles[index]);
@@ -125,7 +125,6 @@ function ArticleList(props: Props) {
     if (mobileOpen) {
       handleDrawerClose();
     }
-    console.log(event);
   };
 
   const drawer = (

@@ -12,5 +12,5 @@ test("renders without crashing", () => {
       <App />
     </ThemeProvider>
   );
-  expect(document.body).toBeInTheDocument();
+  expect(document.body.firstChild).not.toBeNull();
 });

@@ -25,6 +25,10 @@ try {
   process.exit(0);
 }
 
+if (pkg.version !== '4.4.5') {
+  console.warn(`postinstall: react-transition-group version ${pkg.version} — patch may not apply correctly, verify exports paths`);
+}
+
 if (!pkg.exports) {
   pkg.exports = {
     ".": {
