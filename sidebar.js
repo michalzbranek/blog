@@ -24,7 +24,7 @@
 
     // Build nav HTML
     var nav = document.createElement('nav');
-    nav.setAttribute('aria-label', 'navigation archive');
+    nav.setAttribute('aria-label', 'Archiv článků');
 
     var header = document.createElement('div');
     header.className = 'sidebar-header';
@@ -60,8 +60,10 @@
   function initHamburger() {
     var btn = document.getElementById('hamburger');
     if (!btn) return;
+    btn.setAttribute('aria-expanded', 'false');
     btn.addEventListener('click', function () {
-      document.body.classList.toggle('sidebar-open');
+      var isOpen = document.body.classList.toggle('sidebar-open');
+      btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
     });
   }
 
