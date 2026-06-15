@@ -26,11 +26,6 @@
     var nav = document.createElement('nav');
     nav.setAttribute('aria-label', 'Archiv článků');
 
-    var header = document.createElement('div');
-    header.className = 'sidebar-header';
-    header.textContent = 'ARCHIV';
-    nav.appendChild(header);
-
     var list = document.createElement('ul');
     list.className = 'sidebar-list';
 

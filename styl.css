@@ -182,16 +182,6 @@ ul, ol {
   padding: 1rem 0;
 }
 
-/* "ARCHIV" heading inside sidebar */
-.sidebar-header {
-  font-family: var(--font-heading);
-  font-size: 0.85rem;
-  letter-spacing: 1px;
-  color: var(--color-primary);
-  text-align: center;
-  padding: 1rem 1rem 0.5rem;
-}
-
 /* Nav list */
 .sidebar-list {
   display: flex;
@@ -274,49 +264,6 @@ ul, ol {
 }
 
 /* --------------------------------------------------------------------- */
-/* Index / Archive page                                                   */
-/* --------------------------------------------------------------------- */
-
-.archive-container {
-  max-width: 768px;
-  margin: 0 auto;
-  padding: 3rem;
-}
-
-.archive-title {
-  font-family: var(--font-heading);
-  font-size: 3.5rem;
-  color: var(--color-primary);
-  text-align: center;
-  margin-bottom: 2rem;
-}
-
-.archive-list {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.archive-list li {
-  margin: 2px 0;
-}
-
-.archive-link {
-  display: block;
-  font-family: var(--font-heading);
-  font-size: 1.1rem;
-  letter-spacing: 0.5px;
-  color: var(--color-primary);
-  padding: 12px 16px;
-  border-radius: 8px;
-  transition: background-color 0.15s ease;
-}
-
-.archive-link:hover {
-  background-color: var(--color-hover);
-}
-
-/* --------------------------------------------------------------------- */
 /* Mobile (< 600px)                                                       */
 /* --------------------------------------------------------------------- */
 
@@ -368,14 +315,12 @@ ul, ol {
     margin-left: 0;
   }
 
-  /* Article / archive padding reduced */
-  .article-container,
-  .archive-container {
+  /* Article padding reduced */
+  .article-container {
     padding: 1rem;
   }
 
-  .article-title,
-  .archive-title {
+  .article-title {
     font-size: 2.5rem;
   }
 }

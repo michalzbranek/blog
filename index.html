@@ -2,61 +2,18 @@
 <html lang="cs">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Michal Zbranek — Blog</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Russo+One&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styl.css">
-</head>
-<body>
-  <div class="page-layout">
-
-    <!-- Sidebar -->
-    <div id="sidebar" class="sidebar"></div>
-    <div class="sidebar-overlay"></div>
-
-    <!-- Header -->
-    <header class="site-header">
-      <button id="hamburger" class="hamburger" aria-label="Otevřít menu">
-        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-          <line x1="3" y1="6" x2="21" y2="6"/>
-          <line x1="3" y1="12" x2="21" y2="12"/>
-          <line x1="3" y1="18" x2="21" y2="18"/>
-        </svg>
-      </button>
-      <div class="site-header__title">
-        <span class="site-header__name">MICHAL ZBRANEK</span>
-        <span class="site-header__blog">BLOG</span>
-      </div>
-    </header>
-
-    <!-- Main content -->
-    <main class="site-main">
-      <div class="archive-container">
-        <h1 class="archive-title">ARCHIV</h1>
-        <ul class="archive-list" id="archive-list"></ul>
-      </div>
-    </main>
-
-  </div>
-
   <script src="articles.js"></script>
-  <script src="sidebar.js"></script>
   <script>
-    (function() {
-      var list = document.getElementById('archive-list');
-      if (!list || !window.ARTICLES) return;
-      window.ARTICLES.forEach(function(a) {
-        var li = document.createElement('li');
-        var anchor = document.createElement('a');
-        anchor.href = a.slug + '.html';
-        anchor.className = 'archive-link';
-        anchor.textContent = a.title;
-        li.appendChild(anchor);
-        list.appendChild(li);
-      });
+    (function () {
+      var first = (window.ARTICLES && window.ARTICLES[0])
+        ? window.ARTICLES[0].slug
+        : 'rozlouceni';
+      window.location.replace(first + '.html');
     })();
   </script>
+</head>
+<body>
+  <noscript><a href="rozlouceni.html">Pokračovat na blog</a></noscript>
 </body>
 </html>
