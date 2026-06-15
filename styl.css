@@ -1,0 +1,380 @@
+/* =====================================================================
+   styl.css — shared styles for the static blog
+   Faithful port of the React/MUI design.
+   ===================================================================== */
+
+/* --------------------------------------------------------------------- */
+/* Reset / base                                                           */
+/* --------------------------------------------------------------------- */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* --------------------------------------------------------------------- */
+/* CSS custom properties (light mode defaults)                           */
+/* --------------------------------------------------------------------- */
+
+:root {
+  --color-bg:        #fcfcfc;
+  --color-paper:     #ffffff;
+  --color-primary:   #000000;
+  --color-primary-contrast: #ffffff;
+  --color-secondary-text: #757575;
+  --color-divider:   rgba(0, 0, 0, 0.08);
+  --color-header-bg: rgba(255, 255, 255, 0.8);
+  --color-hover:     rgba(0, 0, 0, 0.04);
+
+  --sidebar-width:   280px;
+  --header-height:   80px;
+
+  --font-body: "Inter", "Roboto", "Helvetica", "Arial", sans-serif;
+  --font-heading: "Russo One", sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg:        #121212;
+    --color-paper:     #1e1e1e;
+    --color-primary:   #ffffff;
+    --color-primary-contrast: #000000;
+    --color-divider:   rgba(255, 255, 255, 0.08);
+    --color-header-bg: rgba(18, 18, 18, 0.8);
+    --color-hover:     rgba(255, 255, 255, 0.04);
+  }
+}
+
+/* --------------------------------------------------------------------- */
+/* Base elements                                                          */
+/* --------------------------------------------------------------------- */
+
+html, body {
+  height: 100%;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-bg);
+  color: var(--color-primary);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-heading);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+/* --------------------------------------------------------------------- */
+/* Page layout wrapper                                                    */
+/* --------------------------------------------------------------------- */
+
+.page-layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* --------------------------------------------------------------------- */
+/* Header / AppBar                                                        */
+/* --------------------------------------------------------------------- */
+
+.site-header {
+  position: fixed;
+  top: 0;
+  left: var(--sidebar-width);
+  width: calc(100% - var(--sidebar-width));
+  height: var(--header-height);
+  z-index: 100;
+  background-color: var(--color-header-bg);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--color-divider);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+}
+
+.site-header__title {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+.site-header__name {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 2rem;
+  color: var(--color-primary);
+}
+
+.site-header__blog {
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  color: var(--color-secondary-text);
+  letter-spacing: 2px;
+}
+
+/* Hamburger button — hidden on desktop */
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  color: var(--color-primary);
+  margin-right: 1rem;
+  flex-shrink: 0;
+}
+
+.hamburger svg {
+  display: block;
+  width: 24px;
+  height: 24px;
+}
+
+/* --------------------------------------------------------------------- */
+/* Sidebar                                                                */
+/* --------------------------------------------------------------------- */
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: var(--sidebar-width);
+  height: 100vh;
+  background-color: var(--color-paper);
+  border-right: 1px solid var(--color-divider);
+  overflow-y: auto;
+  z-index: 200;
+  display: flex;
+  flex-direction: column;
+  /* smooth scroll for sidebar itself */
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Overlay backdrop on mobile (shown when sidebar-open) */
+.sidebar-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 150;
+}
+
+#sidebar nav {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 1rem 0;
+}
+
+/* "ARCHIV" heading inside sidebar */
+.sidebar-header {
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  color: var(--color-primary);
+  text-align: center;
+  padding: 1rem 1rem 0.5rem;
+}
+
+/* Nav list */
+.sidebar-list {
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem 0;
+}
+
+.sidebar-list li {
+  margin: 2px 8px;
+}
+
+.sidebar-link {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+  color: var(--color-primary);
+  padding: 8px 12px;
+  border-radius: 8px;
+  transition: background-color 0.15s ease, color 0.15s ease;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sidebar-link:hover {
+  background-color: var(--color-hover);
+}
+
+.sidebar-link.active {
+  background-color: var(--color-primary);
+  color: var(--color-primary-contrast);
+}
+
+/* --------------------------------------------------------------------- */
+/* Main content area                                                      */
+/* --------------------------------------------------------------------- */
+
+.site-main {
+  flex: 1;
+  margin-left: var(--sidebar-width);
+  padding-top: var(--header-height);
+  background-color: var(--color-bg);
+  min-height: 100vh;
+}
+
+/* --------------------------------------------------------------------- */
+/* Article page                                                           */
+/* --------------------------------------------------------------------- */
+
+.article-container {
+  max-width: 768px;
+  margin: 0 auto;
+  padding: 3rem;
+}
+
+.article-title {
+  font-family: var(--font-heading);
+  font-size: 3.5rem;
+  color: var(--color-primary);
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.article-divider {
+  width: 60px;
+  height: 4px;
+  background-color: var(--color-primary);
+  margin: 0 auto 2rem;
+  border: none;
+}
+
+.article-body {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  text-align: justify;
+  text-justify: inter-word;
+  white-space: pre-line;
+  color: var(--color-primary);
+}
+
+/* --------------------------------------------------------------------- */
+/* Index / Archive page                                                   */
+/* --------------------------------------------------------------------- */
+
+.archive-container {
+  max-width: 768px;
+  margin: 0 auto;
+  padding: 3rem;
+}
+
+.archive-title {
+  font-family: var(--font-heading);
+  font-size: 3.5rem;
+  color: var(--color-primary);
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.archive-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.archive-list li {
+  margin: 2px 0;
+}
+
+.archive-link {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  letter-spacing: 0.5px;
+  color: var(--color-primary);
+  padding: 12px 16px;
+  border-radius: 8px;
+  transition: background-color 0.15s ease;
+}
+
+.archive-link:hover {
+  background-color: var(--color-hover);
+}
+
+/* --------------------------------------------------------------------- */
+/* Mobile (< 600px)                                                       */
+/* --------------------------------------------------------------------- */
+
+@media (max-width: 599px) {
+  :root {
+    --header-height: 70px;
+  }
+
+  /* Sidebar hidden off-screen by default on mobile */
+  .sidebar {
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    box-shadow: 4px 0 12px rgba(0, 0, 0, 0.15);
+    border-right: none;
+  }
+
+  /* Sidebar slides in when body has sidebar-open */
+  body.sidebar-open .sidebar {
+    transform: translateX(0);
+  }
+
+  body.sidebar-open .sidebar-overlay {
+    display: block;
+  }
+
+  /* Header takes full width on mobile */
+  .site-header {
+    left: 0;
+    width: 100%;
+    padding: 0 1rem;
+  }
+
+  .hamburger {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .site-header__name {
+    font-size: 1.2rem;
+  }
+
+  .site-header__blog {
+    font-size: 1rem;
+  }
+
+  /* Main content takes full width on mobile */
+  .site-main {
+    margin-left: 0;
+  }
+
+  /* Article / archive padding reduced */
+  .article-container,
+  .archive-container {
+    padding: 1rem;
+  }
+
+  .article-title,
+  .archive-title {
+    font-size: 2.5rem;
+  }
+}
