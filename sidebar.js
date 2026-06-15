@@ -45,6 +45,8 @@
       a.addEventListener('click', function () {
         if (window.innerWidth < 600) {
           document.body.classList.remove('sidebar-open');
+          var btn = document.getElementById('hamburger');
+          if (btn) btn.setAttribute('aria-expanded', 'false');
         }
       });
 
@@ -73,6 +75,8 @@
     if (!overlay) return;
     overlay.addEventListener('click', function () {
       document.body.classList.remove('sidebar-open');
+      var btn = document.getElementById('hamburger');
+      if (btn) btn.setAttribute('aria-expanded', 'false');
     });
   }
 

@@ -40,6 +40,7 @@
     --color-paper:     #1e1e1e;
     --color-primary:   #ffffff;
     --color-primary-contrast: #000000;
+    --color-secondary-text: #a0a0a0;
     --color-divider:   rgba(255, 255, 255, 0.08);
     --color-header-bg: rgba(18, 18, 18, 0.8);
     --color-hover:     rgba(255, 255, 255, 0.04);
