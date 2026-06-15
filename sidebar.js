@@ -12,8 +12,7 @@
     var isIndex =
       pathname === '/' ||
       pathname === '' ||
-      /\/index\.html$/.test(pathname) ||
-      /\/$/.test(pathname);
+      /\/index\.html$/.test(pathname);
 
     var activeSlug = null;
     if (!isIndex) {
@@ -66,13 +65,24 @@
     });
   }
 
+  // Overlay tap closes sidebar on mobile
+  function initOverlay() {
+    var overlay = document.querySelector('.sidebar-overlay');
+    if (!overlay) return;
+    overlay.addEventListener('click', function () {
+      document.body.classList.remove('sidebar-open');
+    });
+  }
+
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', function () {
       renderSidebar();
       initHamburger();
+      initOverlay();
     });
   } else {
     renderSidebar();
     initHamburger();
+    initOverlay();
   }
 })();
